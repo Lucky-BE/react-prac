@@ -7,7 +7,7 @@ const handleVideo = () => {
   alert("동영상 재생 끝");
 };
 
-const Video = ({ playList, index }) => {
+const Video = ({ playList, index, style }) => {
   const [playLists, setPlayLists] = useState(playList);
   const [currentIdx, setCurrentIdx] = useState(index);
   const inputNum = useRef();
@@ -58,7 +58,7 @@ const Video = ({ playList, index }) => {
         <ReactPlayer
           className="react-player"
           url={playLists[currentIdx].url}
-          width="800px"
+          width={style.width}
           height="500px"
           playing={false}
           muted={true}

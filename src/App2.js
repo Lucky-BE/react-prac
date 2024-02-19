@@ -39,7 +39,6 @@ const items = [
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [menuList, setMenuList] = useState(items);
   const [selectedMenu, setSelectedMenu] = useState("1");
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -47,43 +46,31 @@ const App = () => {
   const [itemPath, setItemPath] = useState([]);
 
   const setMenu = ({ key, keyPath }) => {
-    debugger;
-    // const selectedItem = items.find((item) => item.key === key);
     const selectedItem = items.find(
       (item) =>
         item.key === key || item.children?.find((child) => child.key === key)
     );
-    let childItem = selectedItem.children?.find((item) => item.key === key);
-    let path;
-    if (childItem) {
-      setSelectedMenu(childItem);
-      path = getItemPath(childItem);
-    } else {
-      setSelectedMenu(selectedItem);
-      path = getItemPath(selectedItem);
-    }
 
-    setItemPath(path);
-    // setSelectedMenu(selectedItem);
+    // 선택된 메뉴의 경로를 가져와서 Breadcrumb에 표시하기 위해 경로 설정
+    if (selectedItem) {
+      const path = getItemPath(selectedItem);
+      setItemPath(path);
+      setSelectedMenu(selectedItem);
+    }
   };
 
   // 선택된 메뉴의 경로를 가져오는 함수 (재귀적으로 호출)
   const getItemPath = (menuItem) => {
-    //menuItem 객체에 parent가 없으면 menuItem.label 리턴
-    if (!menuItem.parent) return [{ title: menuItem.label }];
+    if (!menuItem.parent) return [menuItem];
 
     const parentItem = items.find((item) => item.key === menuItem.parent);
     const parentPath = getItemPath(parentItem);
 
-    return [...parentPath, { title: menuItem.label }];
+    return [...parentPath, menuItem];
   };
 
   return (
-    <Layout
-      style={{
-        minHeight: "100vh",
-      }}
-    >
+    <Layout style={{ minHeight: "100vh" }}>
       <Sider
         collapsible
         collapsed={collapsed}
@@ -99,26 +86,14 @@ const App = () => {
         />
       </Sider>
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-            height: "fit-content",
-          }}
-        >
-          <h1>{selectedMenu.label}</h1>
-        </Header>
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
-        >
+        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Content style={{ margin: "0 16px" }}>
           <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-            // items={[{ title: "User" }, { title: "Bill" }]}
-            items={itemPath}
+            style={{ margin: "16px 0" }}
+            items={itemPath.map((item) => ({
+              title: item.label,
+              key: item.key,
+            }))}
           />
           <div
             style={{
@@ -128,15 +103,10 @@ const App = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <MyContent selectedMenu={selectedMenu} menuList={menuList} />
-            {/* Bill is a cat. */}
+            <MyContent selectedMenu={selectedMenu} />
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
+        <Footer style={{ textAlign: "center" }}>
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>

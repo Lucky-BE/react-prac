@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Video from "./Player";
+import TextContent from "./TextContent";
 
 const setPlayList = (index, url, vName) => {
   return {
@@ -27,9 +28,7 @@ const playItems = [
   ),
 ];
 
-const MyContent = ({ menuNum, menuList }) => {
-  const [content, setContent] = useState(null);
-
+const MyContent = ({ selectedMenu, menuList }) => {
   // const contentList = [
   //   {
   //     idx: ["10"],
@@ -41,11 +40,6 @@ const MyContent = ({ menuNum, menuList }) => {
   //   },
   // ];
 
-  useEffect(() => {
-    debugger;
-    console.log(menuList);
-  });
-
   // useEffect(() => {
   //   debugger;
   //   if (selectedKey === "10") {
@@ -55,8 +49,23 @@ const MyContent = ({ menuNum, menuList }) => {
   //     setContent("<>test</>");
   //   }
   // }, [selectedKey]);
+
+  if (!selectedMenu) {
+    return <></>;
+  }
   return (
-    <>{menuNum === "10" ? <Video playList={playItems} index={0} /> : <></>}</>
+    <>
+      {selectedMenu.key === "10" ? (
+        //<Video playList={playItems} index={0} />
+        <Video
+          playList={playItems}
+          index={0}
+          style={{ width: "100%", height: "500px" }}
+        />
+      ) : (
+        <TextContent selectedMenu={selectedMenu} menuList={menuList} />
+      )}
+    </>
   );
 };
 
