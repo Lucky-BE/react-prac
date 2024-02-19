@@ -6,7 +6,11 @@ import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 const handleVideo = () => {
   alert("동영상 재생 끝");
 };
-
+/**
+ * @TODO : 비디오 사이즈 조절 기능
+ * @param {*} param0
+ * @returns
+ */
 const Video = ({ playList, index, style }) => {
   const [playLists, setPlayLists] = useState(playList);
   const [currentIdx, setCurrentIdx] = useState(index);
@@ -20,6 +24,9 @@ const Video = ({ playList, index, style }) => {
     return <p>Now Loading...</p>;
   }
 
+  /**
+   * 다음 비디오 재생
+   */
   const nextVideo = () => {
     if (playLists.length - 1 === currentIdx) {
       setCurrentIdx(0);
@@ -34,6 +41,9 @@ const Video = ({ playList, index, style }) => {
     }
   };
 
+  /**
+   * 이전 비디오 재생
+   */
   const prevVideo = () => {
     if (currentIdx === 0) {
       setCurrentIdx(playLists.length - 1);
@@ -43,6 +53,9 @@ const Video = ({ playList, index, style }) => {
     idxChg();
   };
 
+  /**
+   * 입력한 인덱스 비디오로 이동
+   */
   const moveIdx = () => {
     let idx = inputNum.current.value;
     setCurrentIdx(idx - 1);
@@ -51,6 +64,7 @@ const Video = ({ playList, index, style }) => {
   const idxChg = (idx) => {
     inputNum.current.value = idx;
   };
+
   return (
     <>
       <h2>{playLists[currentIdx].vName}</h2>
