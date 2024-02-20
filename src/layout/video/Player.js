@@ -2,6 +2,7 @@ import ReactPlayer from "react-player";
 import { useEffect, useRef, useState } from "react";
 import { Button, InputNumber, Space } from "antd";
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
+import axiosInstance from "../../axiosInstance";
 
 const handleVideo = () => {
   alert("동영상 재생 끝");
@@ -11,13 +12,36 @@ const handleVideo = () => {
  * @param {*} param0
  * @returns
  */
-const Video = ({ playList, index, style }) => {
-  const [playLists, setPlayLists] = useState(playList);
+
+const usePlayList = (data) => {
+  const [playLists, setPlayLists] = useState(null);
+
+  useEffect(() => {
+    axiosInstance({
+      method: "get",
+      url: "/playList",
+      responseType: "json",
+    }).then((response) => {
+      setPlayLists(response.data);
+    });
+  }, [data]);
+
+  return playLists;
+};
+
+const Video = (props) => {
+  const { playList, index, style, selectedMenu } = props;
+  // const [playLists, setPlayLists] = useState(null);
+  const playLists = usePlayList(selectedMenu); //커스텀 훅 방식
+
   const [currentIdx, setCurrentIdx] = useState(index);
   const inputNum = useRef();
 
   useEffect(() => {
-    inputNum.current.value = currentIdx + 1;
+    debugger;
+    if (inputNum.current !== undefined) {
+      inputNum.current.value = currentIdx + 1;
+    }
   }, [currentIdx]);
 
   if (playLists === null) {

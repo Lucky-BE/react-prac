@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MyContent from "../layout/MyContent";
+import MyContent from "../MyContent";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -22,9 +22,9 @@ function getItem(label, key, parent, icon, children) {
 }
 
 const items = [
-  getItem("Option 1", "1", null, <PieChartOutlined />),
-  getItem("Option 2", "2", null, <DesktopOutlined />),
-  getItem("User", "sub1", null, <UserOutlined />, [
+  getItem("User List", "1", null, <DesktopOutlined />),
+  getItem("Option 2", "2", null, <PieChartOutlined />),
+  getItem("Profile", "sub1", null, <UserOutlined />, [
     getItem("Tom", "3", "sub1"),
     getItem("Bill", "4", "sub1"),
     getItem("Alex", "5", "sub1"),
@@ -41,10 +41,10 @@ const AppContent = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [menuList, setMenuList] = useState(items);
   const [selectedMenu, setSelectedMenu] = useState("1");
+  const [itemPath, setItemPath] = useState([{ title: "" }]);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const [itemPath, setItemPath] = useState([]);
 
   const setMenu = ({ key, keyPath }) => {
     debugger;
@@ -54,6 +54,7 @@ const AppContent = () => {
         item.key === key || item.children?.find((child) => child.key === key)
     );
     let childItem = selectedItem.children?.find((item) => item.key === key);
+
     let path;
     if (childItem) {
       setSelectedMenu(childItem);
@@ -62,12 +63,14 @@ const AppContent = () => {
       setSelectedMenu(selectedItem);
       path = getItemPath(selectedItem);
     }
-
     setItemPath(path);
-    // setSelectedMenu(selectedItem);
   };
 
-  // 선택된 메뉴의 경로를 가져오는 함수 (재귀적으로 호출)
+  /**
+   * 선택된 메뉴의 경로를 가져오는 함수(재귀적으로 호출)
+   * @param {*} menuItem
+   * @returns path
+   */
   const getItemPath = (menuItem) => {
     //menuItem 객체에 parent가 없으면 menuItem.label 리턴
     if (!menuItem.parent) return [{ title: menuItem.label }];
@@ -106,7 +109,10 @@ const AppContent = () => {
             height: "fit-content",
           }}
         >
-          <h1>{selectedMenu.label}</h1>
+          <h1>
+            {itemPath !== undefined && itemPath[0].title}
+            {/* {selectedMenu.parent ? selectedMenu.parent : selectedMenu.label} */}
+          </h1>
         </Header>
         <Content
           style={{

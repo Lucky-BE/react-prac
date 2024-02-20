@@ -4,31 +4,21 @@ const useMenuName = (selectedMenu, menuList) => {
   const [menuName, setMenuName] = useState("");
 
   useEffect(() => {
-    debugger;
     setMenuName(selectedMenu.label);
-    // let tmp;
-    // if (selectedMenu.key != null && menuList != null) {
-    //   if (
-    //     selectedMenu.parent !== undefined &&
-    //     selectedMenu.parent !== null &&
-    //     selectedMenu.parent !== ""
-    //   ) {
-    //     tmp = menuList.find((menu) => menu.key === selectedMenu.parent);
-    //     tmp = tmp.children.find((menu) => menu.key === selectedMenu.key);
-    //   } else {
-    //     tmp = menuList.find((menu) => menu.key === selectedMenu.key);
-    //   }
-    //   if (tmp !== undefined) {
-    //     setMenuName(tmp.label);
-    //   }
-    // }
   }, [selectedMenu, menuList]);
 
   return menuName;
 };
 
-const TextContent = ({ selectedMenu, menuList }) => {
+const TextContent = (props) => {
+  const { selectedMenu, menuList } = props;
   const menuName = useMenuName(selectedMenu, menuList);
+  const [mainContent, setMainContent] = useState(null);
+
+  useEffect(() => {
+    if (selectedMenu.key === "1") {
+    }
+  }, [selectedMenu]);
 
   return (
     <>
