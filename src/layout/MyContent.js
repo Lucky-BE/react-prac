@@ -34,10 +34,10 @@ const useContentSet = (value) => {
       case "10":
         setContent(
           <Video
-            playList={value.playItems}
+            url={"/playList"}
             selectedMenu={value.selectedMenu}
             index={0}
-            style={{ width: "100%", height: "500px" }}
+            style={{ width: "60%", height: "50%" }}
           />
         );
         break;

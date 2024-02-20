@@ -1,7 +1,6 @@
 import ReactPlayer from "react-player";
 import { useEffect, useRef, useState } from "react";
 import { Button, InputNumber, Space } from "antd";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import axiosInstance from "../../axiosInstance";
 
 const handleVideo = () => {
@@ -13,26 +12,26 @@ const handleVideo = () => {
  * @returns
  */
 
-const usePlayList = (data) => {
+const usePlayList = (data, url) => {
   const [playLists, setPlayLists] = useState(null);
 
   useEffect(() => {
     axiosInstance({
       method: "get",
-      url: "/playList",
+      url: url,
       responseType: "json",
     }).then((response) => {
       setPlayLists(response.data);
     });
-  }, [data]);
+  }, [data, url]);
 
   return playLists;
 };
 
 const Video = (props) => {
-  const { playList, index, style, selectedMenu } = props;
+  const { url, index, style, selectedMenu } = props;
   // const [playLists, setPlayLists] = useState(null);
-  const playLists = usePlayList(selectedMenu); //커스텀 훅 방식
+  const playLists = usePlayList(selectedMenu, url); //커스텀 훅 방식
 
   const [currentIdx, setCurrentIdx] = useState(index);
   const inputNum = useRef();

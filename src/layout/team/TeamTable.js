@@ -1,25 +1,5 @@
 import { Avatar, Table } from "antd";
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axiosInstance";
-
-// const useData = (value) => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     if (value !== undefined) {
-//       setData(value);
-//     }
-//     // axiosInstance({
-//     //   method: "get",
-//     //   url: "/userList",
-//     //   responseType: "json",
-//     // }).then((response) => {
-//     //   setData(response.data);
-//     // });
-//   }, []);
-
-//   return data;
-// };
 
 const useColumns = (data) => {
   const [columns, setColumns] = useState([]);
