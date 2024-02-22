@@ -10,7 +10,7 @@ const useColumns = (data) => {
       let tmp =
         data.length > 0
           ? Object.keys(data[0])
-              .filter((key) => key !== "key")
+              .filter((key) => key !== "key" && key !== "id")
               .map((key) => ({
                 title: key.toUpperCase(),
                 dataIndex: key,

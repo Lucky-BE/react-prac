@@ -82,80 +82,9 @@ const AppContent = () => {
   };
 
   return (
-    <Layout
-      style={{
-        minHeight: "100vh",
-      }}
-    >
-      <Header>
-        <Menu
-          theme="dark"
-          defaultselectedmenus={["1"]}
-          mode="horizontal" //"inline"
-          items={items}
-          onClick={setMenu}
-        />
-      </Header>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultselectedmenus={["1"]}
-          mode="horizontal" //"inline"
-          items={items}
-          onClick={setMenu}
-        />
-      </Sider>
-      <Layout>
-        <Header
-          style={{
-            padding: 0,
-            background: colorBgContainer,
-            height: "fit-content",
-          }}
-        >
-          <h1>
-            {itemPath !== undefined && itemPath[0].title}
-            {/* {selectedMenu.parent ? selectedMenu.parent : selectedMenu.label} */}
-          </h1>
-        </Header>
-        <Content
-          style={{
-            margin: "0 16px",
-          }}
-        >
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-            // items={[{ title: "User" }, { title: "Bill" }]}
-            items={itemPath}
-          />
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            <MyContent selectedMenu={selectedMenu} menuList={menuList} />
-            {/* Bill is a cat. */}
-          </div>
-        </Content>
-        <Footer
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
-      </Layout>
-    </Layout>
+    <>
+      <div>test</div>
+    </>
   );
 };
 export default AppContent;
