@@ -1063,6 +1063,12 @@
       "label": "Video",
       "url": "/playList",
       "type": "V"
+    },
+    {
+      "key": "4",
+      "label": "MyPage",
+      "url": "/myPage",
+      "type": "P"
     }
   ]
 }

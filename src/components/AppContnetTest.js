@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import UserList from "./UserList";
 import MyPlayer from "./MyPlayerTest";
 import MyFile from "./MyFile";
+import Pages from "./Pages";
 
 const AppContent = () => {
   const [currentMenu, setCurrentMenu] = useRecoilState(CurrentMenu);
@@ -31,22 +32,15 @@ const AppContent = () => {
           />
         );
         break;
+      case "P":
+        setContentArea(<Pages currentMenu={currentMenu} />);
+        break;
       default:
         setContentArea(null);
         break;
     }
   }, [currentMenu, menus]);
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {contentArea}
-    </div>
-  );
+  return <>{contentArea}</>;
 };
 export default AppContent;

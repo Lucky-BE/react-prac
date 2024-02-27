@@ -34,14 +34,25 @@ const Video = (props) => {
   return (
     <>
       <div
-        style={{
-          width: "70%",
-        }}
+        className="content-center-flex"
+        style={
+          {
+            // display: "flex",
+            // alignItems: "center",
+            // justifyContent: "center",
+          }
+        }
       >
-        <Player>
-          <source src={process.env.PUBLIC_URL + "/video/pexels-ilia.mp4"} />
-          <BigPlayButton position="center" />
-        </Player>
+        <div
+          style={{
+            width: "70%",
+          }}
+        >
+          <Player>
+            <source src={process.env.PUBLIC_URL + "/video/pexels-ilia.mp4"} />
+            <BigPlayButton position="center" />
+          </Player>
+        </div>
       </div>
     </>
   );

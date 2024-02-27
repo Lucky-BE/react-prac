@@ -58,7 +58,9 @@ const TeamTable = (props) => {
 
   return (
     <>
-      <Table dataSource={data} columns={columns} />
+      <div className="content-center-flex">
+        <Table dataSource={data} columns={columns} />
+      </div>
     </>
   );
 };

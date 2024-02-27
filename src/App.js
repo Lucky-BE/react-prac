@@ -6,6 +6,7 @@ import MainMenuNav from "./layout/header/MainMenuNav";
 import { RecoilRoot } from "recoil";
 import { Content, Footer } from "antd/es/layout/layout";
 import { Layout } from "antd";
+import "./App.css";
 
 const App = () => {
   return (

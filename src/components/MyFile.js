@@ -38,7 +38,7 @@ const MyFile = () => {
   };
   return (
     <>
-      <div>
+      <div className="content-center-flex">
         <input type="file" onChange={handleFileChange} />
         <button onClick={handleUpload}>upload</button>
       </div>
