@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { CurrentMenu, Menus } from "../common/atom";
 import { useEffect, useState } from "react";
 import UserList from "./UserList";
-import MyPlayer from "./MyPlayer";
+import MyPlayer from "./MyPlayerTest";
 import MyFile from "./MyFile";
 
 const AppContent = () => {
@@ -35,8 +35,18 @@ const AppContent = () => {
         setContentArea(null);
         break;
     }
-  }, [currentMenu]);
+  }, [currentMenu, menus]);
 
-  return <>{contentArea}</>;
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {contentArea}
+    </div>
+  );
 };
 export default AppContent;

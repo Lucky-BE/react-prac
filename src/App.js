@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./layout/Home";
 import MainMenuNav from "./layout/header/MainMenuNav";
 import { RecoilRoot } from "recoil";
-import { Content, Footer, Header } from "antd/es/layout/layout";
+import { Content, Footer } from "antd/es/layout/layout";
 import { Layout } from "antd";
 
 const App = () => {

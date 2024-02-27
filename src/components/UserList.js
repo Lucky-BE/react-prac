@@ -30,13 +30,18 @@ const columns = [
   },
 ];
 
+/**
+ * 메뉴 셋팅
+ * @param {Object} value
+ * @returns
+ */
 const useData = (value) => {
   const [datas, setDatas] = useState();
 
   useEffect(() => {
     AXIOS.get(value.url).then((res) => {
-      debugger;
       console.log(res.data.find((item) => item.menuKey === value.key));
+      setDatas(res.data.find((item) => item.menuKey === value.key).data);
     });
   }, [value]);
   return datas;

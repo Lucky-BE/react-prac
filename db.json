@@ -1026,7 +1026,25 @@
       ]
     }
   ],
-  "filePath": [{}],
+  "fileUpload": [
+    {
+      "id": "c64f",
+      "formData": {},
+      "fileName": "LG유플러스_이동통신_U+인터넷_202309_이_헌.html",
+      "path": "src/files/LG유플러스_이동통신_U+인터넷_202309_이_헌.html"
+    },
+    {
+      "id": "9895",
+      "fileName": "LG유플러스_이동통신_U+인터넷_202309_이_헌.html",
+      "path": "src/files/LG유플러스_이동통신_U+인터넷_202309_이_헌.html"
+    },
+    {
+      "id": "0512",
+      "file": {},
+      "fileName": "test.png",
+      "path": "src/files/test.png"
+    }
+  ],
   "menuList": [
     {
       "key": "1",

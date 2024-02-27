@@ -24,3 +24,5 @@ yarn-error.log*
 
 # 파일업로드 테스트용 로컬 파일 폴더
 files/
+
+video/

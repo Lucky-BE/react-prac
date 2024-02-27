@@ -1,5 +1,5 @@
 import { Menu } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AXIOS from "../../axiosInstance";
 import { useRecoilState } from "recoil";
 import { CurrentMenu, Menus } from "../../common/atom";
@@ -39,7 +39,6 @@ const MainMenuNav = () => {
   const [currentMenu, setCurrentMenu] = useRecoilState(CurrentMenu);
 
   const menuClick = (value) => {
-    debugger;
     setCurrentMenu(() => menus.find((item) => item.key === value.key));
   };
 

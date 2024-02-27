@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.video-react .video-react-control:before,
+.video-react .video-react-big-play-button:before {
+  text-align: center;
+}
+
+.video-react-icon-play-arrow:before,
+.video-react .video-react-bezel .video-react-bezel-icon-play:before,
+.video-react .video-react-play-control:before,
+.video-react .video-react-big-play-button:before {
+  content: "";
+}
+.video-react .video-react-big-play-button {
+  border-radius: 100%;
+  font-size: 3em;
+  line-height: 3em;
+  height: 3em;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 1;
+  border: 0.06em solid #ffffff;
+  background-color: #0061ff;
+  background-color: rgba(255, 255, 255, 0.158);
+  color: rgb(255, 255, 255);
+}
+
+.video-react:hover .video-react-big-play-button,
+.video-react .video-react-big-play-button:focus {
+  outline: 0;
+  border-color: #fff;
+  /* background-color: #ffffff; */
+  background-color: rgba(252, 252, 252, 0.5);
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+}
+
+.video-react .video-react-big-play-button.video-react-big-play-button-center {
+  top: 50%;
+  left: 50%;
+  margin-top: -1.5em;
+  margin-left: -1.5em;
+}
