@@ -3,14 +3,25 @@ import {} from "@ant-design/icons";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./layout/Home";
 import MainMenuNav from "./layout/header/MainMenuNav";
-import { RecoilRoot } from "recoil";
 import { Content, Footer } from "antd/es/layout/layout";
-import { Layout } from "antd";
+import { ConfigProvider, Empty, Layout } from "antd";
 import "./App.css";
+import dayjs from "dayjs";
+import locale from "antd/es/locale/ko_KR";
+
+dayjs.locale("ko");
 
 const App = () => {
   return (
-    <RecoilRoot>
+    <ConfigProvider
+      locale={locale}
+      renderEmpty={() => (
+        <Empty
+          image={Empty.PRESENTED_IMAGE_SIMPLE}
+          description="데이터가 없습니다."
+        />
+      )}
+    >
       <BrowserRouter>
         <Layout>
           <header style={{ height: "120px" }}>
@@ -26,7 +37,7 @@ const App = () => {
           <Footer></Footer>
         </Layout>
       </BrowserRouter>
-    </RecoilRoot>
+    </ConfigProvider>
   );
 };
 
