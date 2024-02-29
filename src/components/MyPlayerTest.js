@@ -1,6 +1,4 @@
-import { BigPlayButton, Player } from "video-react";
-import "../../node_modules/video-react/dist/video-react.css";
-import "../style/CustomBigPlayButton.css";
+import { BigPlayButton, Player } from 'video-react';
 
 // const CustomBigPlayButton = styled(BigPlayButton)`
 //   font-size: 3em;
@@ -45,11 +43,11 @@ const Video = (props) => {
       >
         <div
           style={{
-            width: "70%",
+            width: '70%',
           }}
         >
           <Player>
-            <source src={process.env.PUBLIC_URL + "/video/pexels-ilia.mp4"} />
+            <source src={process.env.PUBLIC_URL + '/video/pexels-ilia.mp4'} />
             <BigPlayButton position="center" />
           </Player>
         </div>

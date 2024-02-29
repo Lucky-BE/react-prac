@@ -1,10 +1,10 @@
-import ReactPlayer from "react-player";
-import { useEffect, useRef, useState } from "react";
-import { Button, InputNumber, Space } from "antd";
-import axiosInstance from "../axiosInstance";
+import ReactPlayer from 'react-player';
+import { useEffect, useRef, useState } from 'react';
+import { Button, InputNumber, Space } from 'antd';
+import axiosInstance from 'axiosInstance';
 
 const handleVideo = () => {
-  alert("동영상 재생 끝");
+  alert('동영상 재생 끝');
 };
 /**
  * @TODO : 비디오 사이즈 조절 기능
@@ -18,9 +18,9 @@ const usePlayList = (data, url) => {
   debugger;
   useEffect(() => {
     axiosInstance({
-      method: "get",
+      method: 'get',
       url: url,
-      responseType: "json",
+      responseType: 'json',
     }).then((response) => {
       setPlayLists(response.data);
     });
@@ -103,7 +103,7 @@ const Video = (props) => {
           controls={true}
           light={false}
           pip={true}
-          poster={""}
+          poster={''}
           onEnded={() => handleVideo()}
         />
       </div>
@@ -111,13 +111,13 @@ const Video = (props) => {
 
       <Space>
         <Button type="text" shape="round" onClick={() => prevVideo()}>
-          {"< "}이전 영상
+          {'< '}이전 영상
         </Button>
         <div>
           {currentIdx + 1} / {playLists.length}
         </div>
         <Button type="text" shape="round" onClick={() => nextVideo()}>
-          다음 영상{" >"}
+          다음 영상{' >'}
         </Button>
         <InputNumber
           min={1}
@@ -126,7 +126,7 @@ const Video = (props) => {
           onChange={onChange}
           ref={inputNum}
         />
-        <Button type={"primary"} onClick={() => moveIdx()}>
+        <Button type={'primary'} onClick={() => moveIdx()}>
           이동
         </Button>
       </Space>

@@ -1,15 +1,15 @@
-import AppContent from "./components/AppContnetTest";
-import {} from "@ant-design/icons";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./layout/Home";
-import MainMenuNav from "./layout/header/MainMenuNav";
-import { Content, Footer } from "antd/es/layout/layout";
-import { ConfigProvider, Empty, Layout } from "antd";
-import "./App.css";
-import dayjs from "dayjs";
-import locale from "antd/es/locale/ko_KR";
+import AppContent from 'components/AppContnetTest';
+import {} from '@ant-design/icons';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from 'layout/Home';
+import MainMenuNav from 'layout/header/MainMenuNav';
+import { Content, Footer } from 'antd/es/layout/layout';
+import { ConfigProvider, Empty, Layout } from 'antd';
+import 'App.css';
+import dayjs from 'dayjs';
+import locale from 'antd/es/locale/ko_KR';
 
-dayjs.locale("ko");
+dayjs.locale('ko');
 
 const App = () => {
   return (
@@ -24,11 +24,11 @@ const App = () => {
     >
       <BrowserRouter>
         <Layout>
-          <header style={{ height: "120px" }}>
-            <div style={{ height: "50px" }}>header</div>
+          <header style={{ height: '120px' }}>
+            <div style={{ height: '50px' }}>header</div>
             <MainMenuNav />
           </header>
-          <Content style={{ margin: "20px" }}>
+          <Content style={{ margin: '20px' }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/appContent1" element={<AppContent />} />
